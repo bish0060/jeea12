@@ -38,7 +38,7 @@ public class Sprite implements Serializable {
     final static int MAX_SPEED = 5;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   // @JsonSerialize(using=ObjectIdJsonSerializer.class)
+    //@JsonSerialize(using=ObjectIdJsonSerializer.class)
     private Long id;
 
     public Long getId() {
