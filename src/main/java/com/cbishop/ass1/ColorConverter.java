@@ -10,7 +10,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-
 /**
  *
  * @author Chris
@@ -18,25 +17,44 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter("com.cbishop.ass1.ColorConverter")
 public class ColorConverter implements Converter{
 
+    private int red = 0;
+    private int green = 0;
+    private int blue = 0;
+    
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        String[] temp;
-        temp = value.split("\\,");
-        Color color = new Color(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]));
-        return color;
-        
-        // Color.decode((string)value); used if you do #FFFFFF
-    }
+            value = value.replaceAll(" ", "");
+            String[] rgb = value.split(","); //split on ,
+            if(rgb.length >= 3){
+              for(int i =0; i < rgb.length; i++){//remove non #
+                  rgb[i] = rgb[i].replaceAll("\\D", "");
+              }
+              red = Integer.parseInt(rgb[0]);
+              green = Integer.parseInt(rgb[1]);
+              blue = Integer.parseInt(rgb[2]);
+              if(red <= 255 && green <= 255 & blue <= 255){
+              return new Color(
+                    red,
+                    green,
+                    blue,
+                      1 //alpha value always completly opaque
+              );
+              }else{
+                  return new Color(0,0,0,1);
+              }
+        }else{
+                return new Color(0,0,0,1);
+            }
+        }
 
     @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        String colorAsString;
-        colorAsString = value.toString();
-        colorAsString = colorAsString.replace("java.awt.Color[r=", "");
-        colorAsString = colorAsString.replace("g=", "");
-        colorAsString = colorAsString.replace("b=", "");
-        colorAsString = colorAsString.replace("]", "");
-        return colorAsString;
+    public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
+        StringBuilder colorString = new StringBuilder();//java.awt.Color[r=0,g=0,b=255]
+        colorString.append("java.awt.Color[r=").append(red).append(",g=").append(green).append(",b=").append(blue).append("]");
+        return colorString.toString();
     }
     
 }
+
+
+
