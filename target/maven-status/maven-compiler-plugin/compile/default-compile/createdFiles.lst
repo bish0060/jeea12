@@ -8,6 +8,7 @@ com\cbishop\ass1\ColorConverter.class
 service\ApplicationConfig.class
 com\cbishop\ass1\util\PaginationHelper.class
 business\ColorAdapter.class
+com\cbishop\ass1\ColorJsonSerializer.class
 com\cbishop\ass1\SpriteController$1.class
 service\SpriteFacadeREST.class
 com\cbishop\ass1\AbstractFacade.class

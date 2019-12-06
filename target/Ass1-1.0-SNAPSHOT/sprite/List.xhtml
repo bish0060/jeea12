@@ -20,12 +20,7 @@
                     <h:commandLink action="#{spriteController.previous}" value="#{bundle.Previous} #{spriteController.pagination.pageSize}" rendered="#{spriteController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{spriteController.next}" value="#{bundle.Next} #{spriteController.pagination.pageSize}" rendered="#{spriteController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{spriteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSpriteTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
+
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSpriteTitle_panelWidth}"/>

@@ -65,6 +65,7 @@ public class Sprite implements Serializable {
     @Column
     private int dy;
     @Column
+    //@JsonSerialize(using = ColorJsonSerializer.class)
     private Color color = Color.BLUE;
 
     public Sprite() {

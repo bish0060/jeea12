@@ -26,26 +26,26 @@ public class ColorConverter implements Converter{
             value = value.replaceAll(" ", "");
             String[] rgb = value.split(","); //split on ,
             if(rgb.length >= 3){
-              for(int i =0; i < rgb.length; i++){//remove non #
-                  rgb[i] = rgb[i].replaceAll("\\D", "");
-              }
-              red = Integer.parseInt(rgb[0]);
-              green = Integer.parseInt(rgb[1]);
-              blue = Integer.parseInt(rgb[2]);
-              if(red <= 255 && green <= 255 & blue <= 255){
-              return new Color(
-                    red,
-                    green,
-                    blue,
-                      1 //alpha value always completly opaque
-              );
-              }else{
-                  return new Color(0,0,0,1);
-              }
-        }else{
+                for(int i =0; i < rgb.length; i++){//remove non #
+                    rgb[i] = rgb[i].replaceAll("\\D", "");
+                }
+                red = Integer.parseInt(rgb[0]);
+                green = Integer.parseInt(rgb[1]);
+                blue = Integer.parseInt(rgb[2]);
+                if(red <= 255 && green <= 255 & blue <= 255){
+                    return new Color(
+                        red,
+                        green,
+                        blue,
+                          1 //alpha value always completly opaque
+                    );
+                }else{
+                    return new Color(0,0,0,1);
+                }
+            }else{
                 return new Color(0,0,0,1);
             }
-        }
+    }
 
     @Override
     public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
